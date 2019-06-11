@@ -1,6 +1,7 @@
 .DS_Store
+*/.DS_Store
 *.ini
-/*.log
+smile.log
 
 # Audio files
 *.wav
