@@ -1,0 +1,11 @@
+*.DS_STORE
+*.ini
+
+# Audio files
+*.wav
+*.lab
+*.peak
+*.tag
+
+# Transition .txt files
+trans_data/

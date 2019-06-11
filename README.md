@@ -13,13 +13,17 @@ It is tricky to compile openSmile on macOS. Basically, you can refer to this [li
 
 You can simply use the release version in **/bin/Win32** or you can compile it. The official guidance is on the webpage of ***openSmile***, **Installation and Documentation** part.
 
+## Corpus
+
+**CASIA** is a corpus that published by ***Chinese Linguistic Data Consortium (CLDC)***. Four professional speakers are required to utter 200 non-parallel sentences in five emotions. There are 1,000 sentences in all which can be used in the research about emotional speech.
+
 ## Usage
 
 The basic introduction of ***openSmile*** is [here](https://blog.csdn.net/lccever/article/details/78621892). 
 For our specific project, you can use command tool to run this executable file like this:
 
 ```
-SMILExtract_Release -C ./opensmile/opensmile-2.3.0/config/IS09_emotion.conf -I ./opensmile/audio/in/1.wav -O ./opensmile/audio/out/1.txt
+SMILExtract -C ./opensmile/opensmile-2.3.0/config/IS09_emotion.conf -I ./opensmile/audio/in/1.wav -O ./opensmile/audio/out/1.txt
 ```
 
 The first argument **-C** should be followed by a config file that determines which features to extract. The config files are contained by the directory **/config** The second argument **-I** is the audio input while the last argument is the result.
