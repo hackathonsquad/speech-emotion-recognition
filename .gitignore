@@ -1,7 +1,11 @@
+# Mac OS X
 .DS_Store
 */.DS_Store
-*.ini
-smile.log
+
+# Win
+*/_desktop.ini
+
+/smile.log
 
 # Audio files
 *.wav

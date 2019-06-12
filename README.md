@@ -15,7 +15,9 @@ You can simply use the release version in **/bin/Win32** or you can compile it. 
 
 ## Corpus
 
-**CASIA** is a corpus that published by ***Chinese Linguistic Data Consortium (CLDC)***. Four professional speakers are required to utter 200 non-parallel sentences in five emotions. There are 1,000 sentences in all which can be used in the research about emotional speech.
+**CASIA** is a corpus that published by ***Chinese Linguistic Data Consortium (CLDC)***. Originally, it includes four professional speakers and six kinds of emotions: `angry`, `happy`, `fear`,`sad`, `surprise` and `neutral`, a total of 9600 different pronunciation. 300 of the corpus are the same text, while the other 100 are different text.
+
+Due to the access limits of authority, only 1000 utterances are available in this project. They are divided into four speakers and five emotions, which means the emotion `suprise` is irrespective.
 
 ## Usage
 
