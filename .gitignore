@@ -1,17 +1,17 @@
 # Mac OS X
 .DS_Store
 */.DS_Store
+**/.DS_Store
 
 # Win
-*/_desktop.ini
+._destop.ini
+*/._destop.ini
+**/_desktop.ini
 
-/smile.log
+smile.log
 
 # Audio files
 *.wav
-*.lab
-*.peak
-*.tag
 
 # Transition .txt files
-trans_data/
+trans_data/**/*.txt

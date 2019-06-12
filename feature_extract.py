@@ -34,7 +34,7 @@ for name in name_list:
                 this_path_input = os.path.join(audio_sub_path,audio)
                 this_path_txt = os.path.join(txt_sub_path,audio[:-4]+'.txt')
                 # the second argument .conf determines which features would be extracted
-                cmd = './opensmile-2.3.0/SMILExtract -C ./opensmile-2.3.0/config/ComParE_2016.conf -I '+this_path_input+' -O '+this_path_txt
+                cmd = './opensmile-2.3.0/SMILExtract -C ./opensmile-2.3.0/config/IS13_ComParE.conf -I '+this_path_input+' -O '+this_path_txt
                 os.system(cmd) 
         
         txt_list = os.listdir(txt_sub_path)
