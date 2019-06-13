@@ -1,5 +1,7 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import shutil
 import numpy as np
 
 # subdirectories in these directories should be named as name/emotion
@@ -25,7 +27,11 @@ for name in name_list:
 
         audio_sub_path = os.path.join(audio_name_path,emotion)
         txt_sub_path = os.path.join(txt_name_path,emotion)
+        shutil.rmtree(txt_sub_path) # 能删除该文件夹和文件夹下所有文件
+        os.mkdir(txt_sub_path)
         data_sub_path = os.path.join(data_name_path,emotion)
+        shutil.rmtree(data_sub_path) # 能删除该文件夹和文件夹下所有文件
+        os.mkdir(data_sub_path)
 
         audio_list = os.listdir(audio_sub_path)
         # generate the .txt file comprising the name and value of result features for each speech
@@ -34,7 +40,7 @@ for name in name_list:
                 this_path_input = os.path.join(audio_sub_path,audio)
                 this_path_txt = os.path.join(txt_sub_path,audio[:-4]+'.txt')
                 # the second argument .conf determines which features would be extracted
-                cmd = './opensmile-2.3.0/SMILExtract -C ./opensmile-2.3.0/config/IS13_ComParE.conf -I '+this_path_input+' -O '+this_path_txt
+                cmd = './opensmile-2.3.0/SMILExtract -C ./opensmile-2.3.0/config/IS13_ComParE_Voc.conf -I '+this_path_input+' -O '+this_path_txt
                 os.system(cmd) 
         
         txt_list = os.listdir(txt_sub_path)
@@ -56,8 +62,7 @@ for name in name_list:
 
                 svm_data = open(os.path.join(data_sub_path,txt),'w')
                 svm_data.write(svm_format)
-
-            svm_data.close()
+                svm_data.close()
 
 
 
