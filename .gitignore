@@ -16,6 +16,3 @@ model/
 
 # Audio files
 *.wav
-
-# Transition .txt files
-trans_data/**/*.txt
