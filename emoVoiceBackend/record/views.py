@@ -5,6 +5,9 @@ import json
 import os
 from django import forms
 import requests
+import urllib.request as request
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 
 class UploadFileForm(forms.Form):
@@ -13,32 +16,17 @@ class UploadFileForm(forms.Form):
 
 
 @ensure_csrf_cookie
-def index(request):
-    if (request.method == 'GET'):
+def index(requests):
+    if (requests.method == 'GET'):
         return JsonResponse({"state": "received"})
-    elif (request.method == 'POST'):
-        try:
-            data = json.loads(request.decode('utf-8'))
-            url = data['blobURL']
-            print(data)
-            response = requests.get(url)
-            print(response)
-        except:
-            print("error")
-        '''
-        file_data = UploadFileForm(request.POST, request.FILES)
+    elif (requests.method == 'POST'):
 
-        print("receiving...")
-        # data = json.loads(request.body.decode('utf-8'))
-        home_path = "/testResource"
-        if (not os.path.isdir(home_path)):
-            os.mkdir(home_path, 755)
-        file = open("/testResource/{}".format(request.FILES["file"]), "wb")
-        print("writing...")
-        # file.write(data["content"])
-        for chunk in (request.FILES['file']).chunks():
-            file.write(chunk)
-        file.close()
-        print("echoing...")
-        '''
-        return JsonResponse({"state": "blob received"})
+        file = requests.FILES['file']
+        path = default_storage.save('record.webm', ContentFile(file.read()))
+        print(path)
+        name = path[:-5]
+        cmd = "ffmpeg -i {} -ac 1 -ar 16000 /testResource/{}.wav".format(path, name)
+        os.system(cmd)
+        os.remove(path)
+
+    return JsonResponse({"dir": “/testResource/{}.wav".format(name)})
