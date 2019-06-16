@@ -29,4 +29,4 @@ def index(requests):
         os.system(cmd)
         os.remove(path)
 
-    return JsonResponse({"dir": “/testResource/{}.wav".format(name)})
+    return JsonResponse({"dir": "/testResource/{}.wav".format(name)})

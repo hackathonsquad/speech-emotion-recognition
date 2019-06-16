@@ -12,8 +12,14 @@ def analyze(filename):
     model_path = '../model/SuckerModel1'
     audio_path = filename
     data_path = '../output_data/data.txt'
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
     result_path = '../output_data/emotion.txt'
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
     emotion_path = '../output_data/result.txt'
+    if not os.path.exists(emotion_path):
+        os.makedirs(emotion_path)
 
     cmd = '../opensmile-2.3.0/SMILExtract -C '+config_path+' -I '+audio_path+' -O '+data_path
     os.system(cmd)
