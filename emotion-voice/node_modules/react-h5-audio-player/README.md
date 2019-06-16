@@ -1,0 +1,169 @@
+# React H5 Audio Player
+
+* Audio player component that provides consistent UI on different browsers.
+
+* Flexbox design with CSS shapes. Mobile friendly. No extra dependencies.
+
+![screenshot](./screenshot.png)
+
+Supported browsers: Chrome, Firefox, Safari, Opera, Edge, IE (≥10)
+
+### Breaking change from 0.x to 1.x
+
+In 1.x, we use `prop-types` package instead of using it directly in React. Thus we dropped support under `react@15.5.0`. The usage will remain the same.
+
+## Installation
+
+`npm i --save react-h5-audio-player`
+
+## Usage
+
+```jsx
+import AudioPlayer from "react-h5-audio-player";
+
+const Player = () => (
+  <AudioPlayer
+    autoPlay
+    src="http://example.com/audio.mp3"
+    onPlay={e => console.log("onPlay")}
+    // other props here
+  />
+);
+```
+
+## Props
+
+### HTML Audio Tag Native Attributes
+
+| Props    |  Type   | Default |
+| -------- | :-----: | :-----: |
+| src      | String  |   ''    |
+| preload  | String  | 'auto'  |
+| autoPlay | Boolean |  false  |
+| loop     | Boolean |  false  |
+| muted    | Boolean |  false  |
+| loop     | Boolean |  false  |
+| volume   | Number  |   1.0   |
+
+More native attributes detail: [MDN Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
+
+### Other Props
+
+#### hidePlayer {Bool} [false]
+
+Indicates if the audio player is hidden.
+
+#### progressUpdateInterval {Number} [500]
+
+Indicates the interval that the progress bar UI updates.
+
+#### listenInterval {Number} [1000]
+
+Indicates how often to call the `onListened` prop during playback, in milliseconds.
+
+#### onAbort {Function (event)}
+
+Called when unloading the audio player, like when switching to a different src file. Passed the event.
+
+#### onCanPlay {Function (event)}
+
+Called when enough of the file has been downloaded to be able to start playing.
+
+#### onEnded {Function (event)}
+
+Called when playback has finished to the end of the file. Passed the event.
+
+#### onError {Function (event)}
+
+Called when the audio tag encounters an error. Passed the event.
+
+#### onListen {Function (currentTime)}
+
+Called every `listenInterval` milliseconds during playback.
+
+#### onPause {Function (event)}
+
+Called when the user pauses playback. Passed the event.
+
+#### onPlay {Function (event)}
+
+Called when the user taps play.
+
+#### onDragStart {Function (event)}
+
+Called when the user start dragging the time indicator. Passed the event.
+
+#### onDragMove {Function (event)}
+
+Called when the user is dragging the time indicator. Passed the event.
+
+#### onDragEnd {Function (event)}
+
+Called when the user finish dragging the time indicator. Passed the event.
+
+## UI Overwrites
+
+React H5 Audio Player provides built-in class names for developers to overwrite.
+
+For example:
+
+```sass
+// In a SASS or LESS file
+.react-h5-audio-player {
+  .toggle-play-wrapper {
+    .toggle-play-button {
+      // Remember to use !important to overwrite inline styles.
+      background-color: red !important;
+    }
+  }
+}
+```
+
+You can find more class names by inspecting element on you browser.
+
+To be compatible with some **old browsers**, you can add prefixers to flex container
+
+```sass
+.react-h5-audio-player {
+  .flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    .toggle-play-wrapper {
+      flex: 1 0 60px;
+      -webkit-box-flex: 1 0 60px;
+      -moz-box-flex: 1 0 60px;
+      -ms-flex: 1 0 60px;
+    }
+    .progress-bar-wrapper {
+      flex: 10 0 auto;
+      -webkit-box-flex: 10 0 auto;
+      -moz-box-flex: 10 0 auto;
+      -ms-flex: 10 0 auto;
+    }
+  }
+}
+```
+
+## Advanced Usage
+
+### Access to the audio element
+
+You can get direct access to the underlying audio element. First get a ref to ReactAudioPlayer:
+
+```jsx
+<ReactAudioPlayer ref={c => (this.player = c)} />
+```
+
+Then you can access the audio element like this:
+
+`this.player.audio`
+
+## How to contribute
+
+Issues and PR's are welcome.
+
+## Credits
+
+This project is inspired by [React Audio Player](https://github.com/justinmc/react-audio-player).

@@ -10,9 +10,5 @@
 
 smile.log
 
-# SVM
-svm-predict
-model/
-
 # Audio files
 *.wav
