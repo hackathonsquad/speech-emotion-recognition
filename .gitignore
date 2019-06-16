@@ -12,3 +12,4 @@ smile.log
 
 # Audio files
 *.wav
+!/test_audio/**/*.wav

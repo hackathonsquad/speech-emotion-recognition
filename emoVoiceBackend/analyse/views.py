@@ -8,14 +8,14 @@ import os
 def analyze(filename):
 
 	# our feature extraction algorithm here
-    config_path = '/Users/xmly/PythonProjects/speech-emotion-recognition/config/IS13_ComParE_Voc.conf'
-    model_path = '/Users/xmly/PythonProjects/speech-emotion-recognition/model/SuckerModel1'
+    config_path = '../config/IS13_ComParE_Voc.conf'
+    model_path = '../model/SuckerModel1'
     audio_path = filename
-    data_path = '/Users/xmly/PythonProjects/speech-emotion-recognition/output_data/data.txt'
-    result_path = '/Users/xmly/PythonProjects/speech-emotion-recognition/output_data/emotion.txt'
-    emotion_path = '/Users/xmly/PythonProjects/speech-emotion-recognition/output_data/result.txt'
+    data_path = '../output_data/data.txt'
+    result_path = '../output_data/emotion.txt'
+    emotion_path = '../output_data/result.txt'
 
-    cmd = '/Users/xmly/PythonProjects/speech-emotion-recognition/opensmile-2.3.0/SMILExtract -C '+config_path+' -I '+audio_path+' -O '+data_path
+    cmd = '../opensmile-2.3.0/SMILExtract -C '+config_path+' -I '+audio_path+' -O '+data_path
     os.system(cmd)
 
     f = open(data_path)
@@ -36,7 +36,7 @@ def analyze(filename):
     svm_data.write(svm_format)
     svm_data.close()
 
-    cmd = '/Users/xmly/PythonProjects/speech-emotion-recognition/svm-predict '+result_path+' '+model_path+' '+emotion_path
+    cmd = '../svm-predict '+result_path+' '+model_path+' '+emotion_path
     os.system(cmd)
     result_data = open(emotion_path,'r')
     emotion_index = result_data.readlines()[-1]
