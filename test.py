@@ -13,7 +13,7 @@ def test_data(config_file,model_file):
 
     config_path = os.path.join('./config',config_file+'.conf')
     model_path = os.path.join('./model',model_file)
-    audio_path = './input_audio'
+    audio_path = '/test_audio'
     data_path = './output_data'
     if (os.path.isfile('./accuracy.txt')):
         os.remove('./accuracy.txt')
@@ -79,7 +79,6 @@ def test_data(config_file,model_file):
                     accuracy = accuracy + 'Wrong' + '\n'
 
                 accuracy_data = open('./accuracy.txt','a')
-                # accuracy_data = open('./accuracy.txt','w')
                 accuracy_data.write(accuracy)
     
     accuracy = accuracy + '\n' + "%s" % (float(n)/m)     

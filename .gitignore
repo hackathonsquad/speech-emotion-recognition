@@ -12,4 +12,8 @@ smile.log
 
 # Audio files
 *.wav
-!/test_audio/**/*.wav
+
+# Data
+output_data/
+accuracy.txt
+result.txt
